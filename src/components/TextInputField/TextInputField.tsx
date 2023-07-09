@@ -1,4 +1,4 @@
-import { TextField, OutlinedTextFieldProps, Box } from '@mui/material';
+import { TextField, OutlinedTextFieldProps } from '@mui/material';
 import * as React from 'react';
 import { BaseFormProps } from '@/interfaces';
 import { useField } from 'formik';

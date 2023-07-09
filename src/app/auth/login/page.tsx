@@ -16,9 +16,12 @@ export default function Login() {
 
   const { mutate: loginMutation, data, error, status } = useLoginMutation();
 
-  const onSubmit = React.useCallback((values: LoginFormValues) => {
-    loginMutation({ email: values.email, password: values.password });
-  }, []);
+  const onSubmit = React.useCallback(
+    (values: LoginFormValues) => {
+      loginMutation({ email: values.email, password: values.password });
+    },
+    [loginMutation],
+  );
 
   const redirect = React.useCallback(
     (role: UserRole) => {
@@ -43,10 +46,10 @@ export default function Login() {
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role') as UserRole | null;
+    const role = localStorage.getItem('role');
 
-    if (typeof token === 'string' && typeof role === 'string') {
-      redirect(role);
+    if (token && role) {
+      redirect(role as UserRole);
     }
   }, [redirect]);
 
