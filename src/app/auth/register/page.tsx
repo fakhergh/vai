@@ -1,27 +1,34 @@
 'use client';
 import * as React from 'react';
-import Link from 'next/link';
-import { Avatar, Box, Container, Grid, Typography } from '@mui/material';
+import { Avatar, Grid, Box, Typography, Container } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { LoginForm, LoginFormValues } from '@/components/LoginForm/LoginForm';
-import { useLoginMutation } from '@/services/authService';
+import Link from 'next/link';
+import { routes } from '@/constants';
+import { RegisterForm, RegisterFormValues } from '@/components';
+import { useRouter } from 'next/navigation';
+import { useRegisterMutation } from '@/services';
 import { HttpStatusCode } from 'axios';
 import { useSnackbar } from 'notistack';
 import { UserRole } from '@/interfaces';
-import { useRouter } from 'next/navigation';
-import { routes } from '@/constants';
 
-export default function Login() {
+export default function Register() {
   const { push } = useRouter();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { mutate: loginMutation, data, error, status } = useLoginMutation();
+  const { mutate: registerMutation, data, error, status } = useRegisterMutation();
 
   const onSubmit = React.useCallback(
-    (values: LoginFormValues) => {
-      loginMutation({ email: values.email, password: values.password });
+    (values: RegisterFormValues) => {
+      registerMutation({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+        gender: values.gender!,
+        birthdate: values.birthdate!,
+      });
     },
-    [loginMutation],
+    [registerMutation],
   );
 
   const redirect = React.useCallback(
@@ -64,8 +71,8 @@ export default function Login() {
 
   React.useEffect(() => {
     switch (error?.response?.status) {
-      case HttpStatusCode.NotFound:
-        enqueueSnackbar('Invalid email or password', { variant: 'error' });
+      case HttpStatusCode.Conflict:
+        enqueueSnackbar('Email in use, please try another one', { variant: 'error' });
         break;
       case HttpStatusCode.InternalServerError:
         enqueueSnackbar('Server error', { variant: 'error' });
@@ -87,14 +94,13 @@ export default function Login() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Sign up
         </Typography>
-        <Box sx={{ mt: 1 }}>
-          <LoginForm onSubmit={onSubmit} loading={status === 'loading'} />
-          <Grid container>
-            <Grid item xs></Grid>
+        <Box sx={{ mt: 3 }}>
+          <RegisterForm onSubmit={onSubmit} loading={status === 'loading'} />
+          <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href={routes.auth.register}>{"Don't have an account? Sign Up"}</Link>
+              <Link href={routes.auth.login}>Already have an account? Sign in</Link>
             </Grid>
           </Grid>
         </Box>
