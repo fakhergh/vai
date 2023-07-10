@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LoginDto } from '@/interfaces';
+import { LoginDto, RegisterDto } from '@/interfaces';
 
 const { BASE_URL } = process.env;
 
@@ -15,6 +15,12 @@ axios.interceptors.request.use(function (config) {
 
 export async function login(body: LoginDto) {
   const response = await client.post('/login', body);
+
+  return response.data;
+}
+
+export async function register(body: RegisterDto) {
+  const response = await client.post('/register', body);
 
   return response.data;
 }
