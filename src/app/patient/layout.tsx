@@ -7,7 +7,7 @@ import { useLogout } from '@/hooks';
 export default function PatientLayout({ children }: { children: React.ReactNode }) {
   const { logout } = useLogout();
 
-  const [sideBarVisible, setSideBarVisible] = React.useState(false);
+  const [, /*sideBarVisible*/ setSideBarVisible] = React.useState(false);
 
   const onMenuClick = React.useCallback(() => {
     setSideBarVisible(prev => !prev);

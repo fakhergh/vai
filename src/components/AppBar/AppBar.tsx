@@ -1,6 +1,6 @@
-import { Badge, IconButton, Toolbar, Typography } from '@mui/material';
+import { IconButton, Toolbar, Typography } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { Menu as IconMenu, Notifications as IconNotifications, Logout as IconLogout } from '@mui/icons-material';
+import { Menu as IconMenu, Logout as IconLogout } from '@mui/icons-material';
 
 interface AppBarProps extends MuiAppBarProps {
   title?: string;
