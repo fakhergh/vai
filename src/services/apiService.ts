@@ -7,7 +7,7 @@ const client = axios.create({
   baseURL: BASE_URL || 'http://vai-api.eu-central-1.elasticbeanstalk.com/api',
 });
 
-axios.interceptors.request.use(function (config) {
+client.interceptors.request.use(function (config) {
   config.headers.Authorization = localStorage.getItem('token');
 
   return config;
@@ -21,6 +21,12 @@ export async function login(body: LoginDto) {
 
 export async function register(body: RegisterDto) {
   const response = await client.post('/register', body);
+
+  return response.data;
+}
+
+export async function fetchAppointments() {
+  const response = await client.get('/appointments');
 
   return response.data;
 }
