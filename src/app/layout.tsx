@@ -11,6 +11,9 @@ import { queryClient } from '@/queryClient';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <title>VAI Platform</title>
+      </head>
       <body>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>

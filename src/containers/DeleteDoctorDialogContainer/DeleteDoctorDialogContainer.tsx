@@ -47,7 +47,7 @@ export function DeleteDoctorDialogContainer({ doctorId, open, title, description
   React.useEffect(() => {
     switch (error?.response?.status) {
       case HttpStatusCode.Forbidden:
-        enqueueSnackbar('Doctor cannot be delete as has appointments', { variant: 'error' });
+        enqueueSnackbar('Doctor cannot be delete as he has appointments', { variant: 'error' });
         break;
       case HttpStatusCode.InternalServerError:
         enqueueSnackbar('Server error', { variant: 'error' });

@@ -15,3 +15,5 @@ export * from './Dialog/Dialog';
 export * from './UpdateDoctorDialogForm/UpdateDoctorDialogForm';
 export * from './PatientItem/PatientItem';
 export * from './UpdatePatientDialogForm/UpdatePatientDialogForm';
+export * from './CreatePatientDialogForm/CreatePatientDialogForm';
+export * from './CreateDoctorDialogForm/CreateDoctorDialogForm';

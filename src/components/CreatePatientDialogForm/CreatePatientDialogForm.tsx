@@ -7,19 +7,20 @@ import * as Yup from 'yup';
 import { PatientGender } from '@/interfaces';
 import { genderRadioGroupItems } from '@/constants';
 
-export interface UpdatePatientDialogFormValues {
+export interface CreatePatientDialogFormValues {
+  email: string;
+  password: string;
   firstName: string;
   lastName: string;
-  gender: PatientGender;
-  birthdate: Date;
+  gender: PatientGender | null;
+  birthdate: Date | null;
 }
 
-export interface UpdatePatientDialogFormProps {
-  initialValues: UpdatePatientDialogFormValues;
+export interface CreatePatientDialogFormProps {
   open: boolean;
   loading?: boolean;
   onClose: () => void;
-  onSubmit: (values: UpdatePatientDialogFormValues) => void;
+  onSubmit: (values: CreatePatientDialogFormValues) => void;
 }
 
 const StyledDialog = styled(Dialog)(({ theme }) => ({
@@ -31,14 +32,25 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
+const initialValues: CreatePatientDialogFormValues = {
+  email: '',
+  password: '',
+  firstName: '',
+  lastName: '',
+  gender: null,
+  birthdate: null,
+};
+
 const validationSchema = Yup.object().shape({
+  email: Yup.string().email().required(),
+  password: Yup.string().min(4).required(),
   firstName: Yup.string().min(4).required(),
   lastName: Yup.string().min(4).required(),
   gender: Yup.string().oneOf([PatientGender.MALE, PatientGender.FEMALE]).required(),
   birthdate: Yup.date().required(),
 });
 
-export function UpdatePatientDialogForm({ open, loading, initialValues, onSubmit, onClose }: UpdatePatientDialogFormProps) {
+export function CreatePatientDialogForm({ open, loading, onSubmit, onClose }: CreatePatientDialogFormProps) {
   const handleClose: React.ReactEventHandler<{}> = React.useCallback(() => {
     if (loading) return;
     onClose();
@@ -50,7 +62,7 @@ export function UpdatePatientDialogForm({ open, loading, initialValues, onSubmit
         {({ handleSubmit }) => (
           <Box>
             <DialogTitle sx={{ m: 0, p: 2 }}>
-              Update patient
+              Create a new patient
               <IconButton
                 disabled={loading}
                 onClick={onClose}
@@ -65,6 +77,8 @@ export function UpdatePatientDialogForm({ open, loading, initialValues, onSubmit
               </IconButton>
             </DialogTitle>
             <DialogContent dividers>
+              <TextInputField name="email" margin="normal" fullWidth label="Email" disabled={loading} type="email" />
+              <TextInputField name="password" margin="normal" fullWidth label="Password" disabled={loading} type="password" />
               <TextInputField name="firstName" margin="normal" fullWidth label="First Name" disabled={loading} />
               <TextInputField name="lastName" margin="normal" fullWidth label="Last name" disabled={loading} />
               <RadioGroupField name="gender" row items={genderRadioGroupItems} disabled={loading} />

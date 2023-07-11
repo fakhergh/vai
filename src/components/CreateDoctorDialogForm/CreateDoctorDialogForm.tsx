@@ -1,25 +1,25 @@
 import { Formik } from 'formik';
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, styled } from '@mui/material';
 import { Close as IconClose } from '@mui/icons-material';
-import { DatePickerField, RadioGroupField, TextInputField } from '@/components';
+import { TextInputField } from '@/components';
 import * as React from 'react';
 import * as Yup from 'yup';
-import { PatientGender } from '@/interfaces';
-import { genderRadioGroupItems } from '@/constants';
 
-export interface UpdatePatientDialogFormValues {
+export interface CreateDoctorDialogFormValues {
+  email: string;
+  password: string;
   firstName: string;
   lastName: string;
-  gender: PatientGender;
-  birthdate: Date;
+  address: string;
+  speciality: string;
+  phoneNumber: string;
 }
 
-export interface UpdatePatientDialogFormProps {
-  initialValues: UpdatePatientDialogFormValues;
+export interface CreateDoctorDialogFormProps {
   open: boolean;
   loading?: boolean;
   onClose: () => void;
-  onSubmit: (values: UpdatePatientDialogFormValues) => void;
+  onSubmit: (values: CreateDoctorDialogFormValues) => void;
 }
 
 const StyledDialog = styled(Dialog)(({ theme }) => ({
@@ -31,14 +31,27 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
+const initialValues: CreateDoctorDialogFormValues = {
+  email: '',
+  password: '',
+  firstName: '',
+  lastName: '',
+  address: '',
+  speciality: '',
+  phoneNumber: '',
+};
+
 const validationSchema = Yup.object().shape({
+  email: Yup.string().email().required(),
+  password: Yup.string().min(4).required(),
   firstName: Yup.string().min(4).required(),
   lastName: Yup.string().min(4).required(),
-  gender: Yup.string().oneOf([PatientGender.MALE, PatientGender.FEMALE]).required(),
-  birthdate: Yup.date().required(),
+  address: Yup.string().required(),
+  speciality: Yup.string().required(),
+  phoneNumber: Yup.string().required(),
 });
 
-export function UpdatePatientDialogForm({ open, loading, initialValues, onSubmit, onClose }: UpdatePatientDialogFormProps) {
+export function CreateDoctorDialogForm({ open, loading, onSubmit, onClose }: CreateDoctorDialogFormProps) {
   const handleClose: React.ReactEventHandler<{}> = React.useCallback(() => {
     if (loading) return;
     onClose();
@@ -50,7 +63,7 @@ export function UpdatePatientDialogForm({ open, loading, initialValues, onSubmit
         {({ handleSubmit }) => (
           <Box>
             <DialogTitle sx={{ m: 0, p: 2 }}>
-              Update patient
+              Create a new doctor
               <IconButton
                 disabled={loading}
                 onClick={onClose}
@@ -65,10 +78,13 @@ export function UpdatePatientDialogForm({ open, loading, initialValues, onSubmit
               </IconButton>
             </DialogTitle>
             <DialogContent dividers>
+              <TextInputField name="email" margin="normal" fullWidth label="Email" disabled={loading} type="email" />
+              <TextInputField name="password" margin="normal" fullWidth label="Password" disabled={loading} type="password" />
               <TextInputField name="firstName" margin="normal" fullWidth label="First Name" disabled={loading} />
               <TextInputField name="lastName" margin="normal" fullWidth label="Last name" disabled={loading} />
-              <RadioGroupField name="gender" row items={genderRadioGroupItems} disabled={loading} />
-              <DatePickerField name="birthdate" label="Address" disabled={loading} slotProps={{ textField: { fullWidth: true } }} />
+              <TextInputField name="address" margin="normal" fullWidth label="Address" disabled={loading} />
+              <TextInputField name="speciality" margin="normal" fullWidth label="Speciality" disabled={loading} />
+              <TextInputField name="phoneNumber" margin="normal" fullWidth label="Phone Number" disabled={loading} />
             </DialogContent>
             <DialogActions>
               <Button onClick={onClose} disabled={loading}>

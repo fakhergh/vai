@@ -12,6 +12,12 @@ export function useCreateDoctorMutation() {
   return useMutation<Response<Doctor>, AxiosError, CreateDoctorDto>({
     mutationKey: ['createDoctor'],
     mutationFn: (data: CreateDoctorDto) => createDoctor(data),
+    onSuccess: data => {
+      queryClient.setQueryData<any>(['doctors'], (prev: Response<Array<Doctor>>) => ({
+        ...prev,
+        data: [data.data, ...prev?.data],
+      }));
+    },
   });
 }
 

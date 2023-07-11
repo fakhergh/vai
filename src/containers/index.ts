@@ -5,3 +5,5 @@ export * from './DeleteDoctorDialogContainer/DeleteDoctorDialogContainer';
 export * from './PatientItemContainer/PatientItemContainer';
 export * from './DeletePatientDialogContainer/DeletePatientDialogContainer';
 export * from './UpdatePatientDialogFormContainer/UpdatePatientDialogFormContainer';
+export * from './CreatePatientDialogFormContainer/CreatePatientDialogFormContainer';
+export * from './CreateDoctorDialogFormContainer/CreateDoctorDialogFormContainer';

@@ -50,7 +50,7 @@ export function UpdateDoctorDialogForm({ open, loading, initialValues, onSubmit,
         {({ handleSubmit }) => (
           <Box>
             <DialogTitle sx={{ m: 0, p: 2 }}>
-              Book a new appointment
+              Update doctor
               <IconButton
                 disabled={loading}
                 onClick={onClose}

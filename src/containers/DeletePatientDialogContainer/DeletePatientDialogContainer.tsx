@@ -47,7 +47,7 @@ export function DeletePatientDialogContainer({ patientId, open, title, descripti
   React.useEffect(() => {
     switch (error?.response?.status) {
       case HttpStatusCode.Forbidden:
-        enqueueSnackbar('Patient cannot be delete as has appointments', { variant: 'error' });
+        enqueueSnackbar('Patient cannot be delete as he has appointments', { variant: 'error' });
         break;
       case HttpStatusCode.InternalServerError:
         enqueueSnackbar('Server error', { variant: 'error' });

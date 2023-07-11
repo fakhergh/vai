@@ -1,19 +1,19 @@
 'use client';
 import * as React from 'react';
 import { Box, Container, Grid, Toolbar } from '@mui/material';
-import { List as IconList, Vaccines as IconVaccines } from '@mui/icons-material';
+import { Vaccines as IconVaccines, Person as IconPerson } from '@mui/icons-material';
 import { AppBar, Drawer, DrawerItem } from '@/components';
 import { useLogout } from '@/hooks';
 import { routes } from '@/constants';
 import { useRouter } from 'next/navigation';
 
 const drawerItems: Array<DrawerItem> = [
+  { label: 'Doctors', icon: IconVaccines, path: routes.admin.doctors },
   {
-    label: 'Appointments',
-    icon: IconList,
+    label: 'Patients',
+    icon: IconPerson,
     path: routes.admin.patients,
   },
-  { label: 'Doctors', icon: IconVaccines, path: routes.admin.doctors },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

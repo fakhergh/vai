@@ -1,10 +1,8 @@
 import axios from 'axios';
 import { CreateAppointmentDto, CreateDoctorDto, CreatePatientDto, LoginDto, RegisterDto, UpdateDoctorDto, UpdatePatientDto } from '@/interfaces';
 
-const { NEXT_PUBLIC_BASE_URL } = process.env;
-
 const client = axios.create({
-  baseURL: NEXT_PUBLIC_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 });
 
 client.interceptors.request.use(function (config) {

@@ -15,6 +15,12 @@ export function useCreatePatientMutation() {
   return useMutation<Response<Patient>, AxiosError, CreatePatientDto>({
     mutationKey: ['createPatient'],
     mutationFn: (data: CreatePatientDto) => createPatient(data),
+    onSuccess: data => {
+      queryClient.setQueryData<any>(['patients'], (prev: Response<Array<Patient>>) => ({
+        ...prev,
+        data: [data.data, ...prev?.data],
+      }));
+    },
   });
 }
 
