@@ -1,3 +1,3 @@
-export interface BaseFormProps {
+export interface BaseFieldProps {
   name: string;
 }
