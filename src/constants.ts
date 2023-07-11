@@ -10,6 +10,8 @@ export const routes = {
     home: '/doctor',
   },
   patient: {
-    home: '/patient',
+    appointments: '/patient/appointments',
+    doctors: '/patient/doctors',
+    createAppointment: '/patient/create-appointment',
   },
 };
