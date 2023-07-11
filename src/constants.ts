@@ -1,17 +1,29 @@
+import { RadioItemProps } from '@/components';
+import { PatientGender } from '@/interfaces';
+
 export const routes = {
   auth: {
     login: '/auth/login',
     register: '/auth/register',
   },
   admin: {
-    home: '/admin',
+    patients: '/admin/patients',
+    doctors: '/admin/doctors',
   },
   doctor: {
-    home: '/doctor',
+    appointments: '/doctor/appointments',
   },
   patient: {
     appointments: '/patient/appointments',
     doctors: '/patient/doctors',
-    createAppointment: '/patient/create-appointment',
   },
 };
+
+export const genderRadioGroupItems: Array<RadioItemProps> = [
+  {
+    key: 'male',
+    value: PatientGender.MALE,
+    label: 'Male',
+  },
+  { key: 'female', value: PatientGender.FEMALE, label: 'Female' },
+];

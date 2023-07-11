@@ -11,3 +11,7 @@ export * from './DoctorItem/DoctorItem';
 export * from './TableCellActions/TableCellActions';
 export * from './CreateAppointmentDialogForm/CreateAppointmentDialogForm';
 export * from './AppointmentDateTimePickerField/AppointmentDateTimePickerField';
+export * from './Dialog/Dialog';
+export * from './UpdateDoctorDialogForm/UpdateDoctorDialogForm';
+export * from './PatientItem/PatientItem';
+export * from './UpdatePatientDialogForm/UpdatePatientDialogForm';

@@ -37,10 +37,10 @@ export default function Register() {
 
       switch (role) {
         case UserRole.ADMIN:
-          nextRoute = routes.admin.home;
+          nextRoute = routes.admin.patients;
           break;
         case UserRole.DOCTOR:
-          nextRoute = routes.doctor.home;
+          nextRoute = routes.doctor.appointments;
           break;
         case UserRole.PATIENT:
           nextRoute = routes.patient.appointments;

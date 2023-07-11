@@ -3,7 +3,8 @@ import * as React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { PatientGender } from '@/interfaces';
-import { DatePickerField, RadioGroupField, RadioItemProps, TextInputField } from '@/components';
+import { DatePickerField, RadioGroupField, TextInputField } from '@/components';
+import { genderRadioGroupItems } from '@/constants';
 
 export interface RegisterFormValues {
   firstName: string;
@@ -37,15 +38,6 @@ const validationSchema = Yup.object().shape({
   birthdate: Yup.date().required(),
 });
 
-const genderItems: Array<RadioItemProps> = [
-  {
-    key: 'male',
-    value: PatientGender.MALE,
-    label: 'Male',
-  },
-  { key: 'female', value: PatientGender.FEMALE, label: 'Female' },
-];
-
 export function RegisterForm({ onSubmit, loading }: RegisterFormProps) {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -65,7 +57,7 @@ export function RegisterForm({ onSubmit, loading }: RegisterFormProps) {
               <TextInputField name="password" fullWidth label="Password" type="password" autoComplete="new-password" disabled={loading} />
             </Grid>
             <Grid item xs={12}>
-              <RadioGroupField row name="gender" items={genderItems} disabled={loading} />
+              <RadioGroupField row name="gender" items={genderRadioGroupItems} disabled={loading} />
             </Grid>
             <Grid item xs={12}>
               <DatePickerField name="birthdate" slotProps={{ textField: { fullWidth: true } }} disabled={loading} />

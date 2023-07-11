@@ -4,6 +4,8 @@ import { TableCellActions } from '@/components';
 
 export enum DoctorActionKey {
   BOOK,
+  EDIT,
+  DELETE,
 }
 
 export interface DoctorItemProps extends Pick<TableCellActions<DoctorActionKey>, 'onActionClick'> {

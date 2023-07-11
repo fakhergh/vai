@@ -40,7 +40,7 @@ export function LoginForm({ loading, onSubmit }: LoginFormProps) {
             autoFocus
             disabled={loading}
           />
-          <Button fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled={loading} onClick={() => handleSubmit()}>
+          <Button fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled={loading} onClick={() => handleSubmit()} autoFocus>
             Sign In
           </Button>
         </Box>

@@ -30,10 +30,10 @@ export default function Login() {
 
       switch (role) {
         case UserRole.ADMIN:
-          nextRoute = routes.admin.home;
+          nextRoute = routes.admin.doctors;
           break;
         case UserRole.DOCTOR:
-          nextRoute = routes.doctor.home;
+          nextRoute = routes.doctor.appointments;
           break;
         case UserRole.PATIENT:
           nextRoute = routes.patient.appointments;
