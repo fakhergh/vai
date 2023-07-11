@@ -1,19 +1,12 @@
 'use client';
 import { ThemeProvider } from '@mui/system';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { theme } from '@/theme';
 import { CssBaseline } from '@mui/material';
 import { SnackbarProvider } from 'notistack';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
-const queryClient: QueryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: Infinity,
-    },
-  },
-});
+import { queryClient } from '@/queryClient';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
