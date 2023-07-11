@@ -22,7 +22,9 @@ Or [Click here](https://vai-bice.vercel.app) to test the deployed application on
 
 - This project is developed with NextJs framework as it is advanced tech that supports several features such as: Routing
   and nested layouts, built-in optimizations (images, fonts...), SSR, etc...
-- The libraries that we used are the following:
+
+
+- The used libraries are the following:
 
 | Library     | Description                                                                                                                        | Link                                       |
 |-------------|------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
@@ -36,17 +38,17 @@ Or [Click here](https://vai-bice.vercel.app) to test the deployed application on
 
 ## Architecture
 
-- In this project, we follow the MVVM architecture to separate the business logic of an application from the user
+- In this project, we follow the MVVM architecture to separate the business logic of the application from the user
   interface:
   - First, we created our UI components to only display data passed as props.
-  - Then, we created custom react-query hooks based on the asynchronous functions of the api service to use them later in containers components.
+  - Then, we created our business logic such as: managing local state and custom react-query hooks based on the asynchronous functions of the api service.
   - Finally, We used the containers components to combine the business logic and the UI components.
 
 
 - This approach aims to:
-  - create a well-structured project
-  - making the components/login-functions testing easier
-  - clean and maintainable code
+  - create a well-structured project.
+  - making the components/login-functions testing easier.
+  - clean and maintainable code.
   - get a high app performance.
 
 ## Deployment
