@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LoginDto, RegisterDto } from '@/interfaces';
+import { CreateAppointmentDto, LoginDto, RegisterDto } from '@/interfaces';
 
 const { BASE_URL } = process.env;
 
@@ -27,6 +27,18 @@ export async function register(body: RegisterDto) {
 
 export async function fetchAppointments() {
   const response = await client.get('/appointments');
+
+  return response.data;
+}
+
+export async function createAppointment(body: CreateAppointmentDto) {
+  const response = await client.post('/appointments', body);
+
+  return response.data;
+}
+
+export async function fetchDoctors() {
+  const response = await client.get('/doctors');
 
   return response.data;
 }

@@ -15,3 +15,10 @@ export interface Appointment {
   createdAt: string;
   updateAt: string;
 }
+
+export interface CreateAppointmentDto {
+  doctorId: string;
+  patientId?: string;
+  description: string;
+  date: string;
+}

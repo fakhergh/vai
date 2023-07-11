@@ -43,7 +43,7 @@ export default function Register() {
           nextRoute = routes.doctor.home;
           break;
         case UserRole.PATIENT:
-          nextRoute = routes.patient.home;
+          nextRoute = routes.patient.appointments;
           break;
       }
 

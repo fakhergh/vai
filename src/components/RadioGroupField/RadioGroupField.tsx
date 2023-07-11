@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { FormControlLabel, FormControlLabelProps, FormGroupProps, FormHelperText, Radio, RadioGroup } from '@mui/material';
 import { useField } from 'formik';
-import { BaseFormProps } from '@/interfaces';
+import { BaseFieldProps } from '@/interfaces';
 
 export interface RadioItemProps extends Pick<FormControlLabelProps, 'value' | 'label'> {
   key: string;
 }
 
-interface RadioGroupFieldProps extends BaseFormProps, Pick<FormGroupProps, 'row'> {
+interface RadioGroupFieldProps extends BaseFieldProps, Pick<FormGroupProps, 'row'> {
   items: RadioItemProps[];
   disabled?: boolean;
 }

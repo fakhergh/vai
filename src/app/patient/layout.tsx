@@ -1,21 +1,36 @@
 'use client';
 import * as React from 'react';
 import { Box, Container, Grid, Toolbar } from '@mui/material';
-import { AppBar } from '@/components';
+import { List as IconList, Vaccines as IconVaccines } from '@mui/icons-material';
+import { AppBar, Drawer, DrawerItem } from '@/components';
 import { useLogout } from '@/hooks';
+import { routes } from '@/constants';
+import { useRouter } from 'next/navigation';
+
+const drawerItems: Array<DrawerItem> = [
+  {
+    label: 'Appointments',
+    icon: IconList,
+    path: routes.patient.appointments,
+  },
+  { label: 'Doctors', icon: IconVaccines, path: routes.patient.doctors },
+];
 
 export default function PatientLayout({ children }: { children: React.ReactNode }) {
+  const { push } = useRouter();
+
   const { logout } = useLogout();
 
-  const [, /*sideBarVisible*/ setSideBarVisible] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
-  const onMenuClick = React.useCallback(() => {
-    setSideBarVisible(prev => !prev);
+  const toggleDrawer = React.useCallback(() => {
+    setDrawerOpen(prev => !prev);
   }, []);
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar onMenuClick={onMenuClick} onLogoutClick={logout} title="Patient Space" />
+      <AppBar open={drawerOpen} onMenuClick={toggleDrawer} onLogoutClick={logout} title="Patient Space" />
+      <Drawer open={drawerOpen} items={drawerItems} onItemClick={push} />
       <Box
         component="main"
         sx={{
