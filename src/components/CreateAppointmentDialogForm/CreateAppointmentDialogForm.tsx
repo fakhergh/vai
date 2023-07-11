@@ -37,13 +37,10 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export function CreateAppointmentDialogForm({ loading, onSubmit, onClose, open }: CreateAppointmentDialogFormProps) {
-  const handleClose: React.ReactEventHandler<{}> = React.useCallback(
-    event => {
-      if (loading) return;
-      onClose();
-    },
-    [loading, onClose],
-  );
+  const handleClose: React.ReactEventHandler<{}> = React.useCallback(() => {
+    if (loading) return;
+    onClose();
+  }, [loading, onClose]);
 
   return (
     <StyledDialog onClose={handleClose} open={open} disableEscapeKeyDown={loading}>

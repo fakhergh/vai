@@ -1,6 +1,5 @@
-import { styled, ListItemButton, ListItemText, ListItemIcon, Drawer as MuiDrawer, Toolbar, IconButton, Divider, List } from '@mui/material';
+import { styled, ListItemButton, ListItemText, ListItemIcon, Drawer as MuiDrawer, Toolbar, Divider, List } from '@mui/material';
 import { SvgIconComponent } from '@mui/icons-material';
-import Link from 'next/link';
 
 export interface DrawerItem {
   label: string;

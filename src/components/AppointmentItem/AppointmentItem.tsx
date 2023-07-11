@@ -1,4 +1,4 @@
-import { IconButton, TableCell, TableRow } from '@mui/material';
+import { TableCell, TableRow } from '@mui/material';
 import { Appointment, TableAction } from '@/interfaces';
 import { TableCellActions } from '@/components';
 

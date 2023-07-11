@@ -1,6 +1,5 @@
 import { DoctorActionKey, DoctorItem, DoctorItemProps, OnActionClickEvent } from '@/components';
 import * as React from 'react';
-import { Box } from '@mui/material';
 import { CreateAppointmentDialogFormContainer } from '@/containers';
 
 interface DoctorItemContainerProps extends Omit<DoctorItemProps, 'onActionClick'> {}
