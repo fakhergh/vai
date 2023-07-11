@@ -1,12 +1,14 @@
-import { DatePicker, DatePickerProps } from '@mui/x-date-pickers';
-import * as React from 'react';
 import { BaseFieldProps } from '@/interfaces';
 import { useField } from 'formik';
+import { DateTimePicker, DateOrTimeView, DatePickerProps } from '@mui/x-date-pickers';
+import * as React from 'react';
 import { Dayjs } from 'dayjs';
 
-interface DatePickerFieldProps<TDate> extends DatePickerProps<TDate>, BaseFieldProps {}
+export interface AppointmentDateTimePickerFieldProps<TDate> extends DatePickerProps<TDate>, BaseFieldProps {}
 
-export function DatePickerField<TDate>({ name, ...props }: DatePickerFieldProps<TDate>) {
+const views: Array<DateOrTimeView> = ['month', 'day', 'hours'];
+
+export function AppointmentDateTimePickerField<TDate>({ name, ...props }: AppointmentDateTimePickerFieldProps<TDate>) {
   const [{ value, onBlur }, { error }, { setValue }] = useField(name);
 
   const onChange = React.useCallback(
@@ -17,12 +19,11 @@ export function DatePickerField<TDate>({ name, ...props }: DatePickerFieldProps<
   );
 
   return (
-    <DatePicker<any>
-      {...props}
+    <DateTimePicker<any>
+      views={views}
       value={value}
       onChange={onChange}
       slotProps={{
-        ...props.slotProps,
         textField: {
           ...props.slotProps?.textField,
           onBlur,
