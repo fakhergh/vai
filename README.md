@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -14,21 +12,39 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Or [Click here](https://vai-bice.vercel.app) if you can test the deployed application online.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tech-Stack
 
-## Learn More
+- This project is developed with NextJs framework as it is advanced tech that supports several features such as: Routing
+  and nested layouts, built-in optimizations (images, fonts...), SSR, etc...
+- The libraries that we used are the following:
 
-To learn more about Next.js, take a look at the following resources:
+| Library     | Description                                                                                                                        | Link                                       |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| Material UI | UI styling                                                                                                                         | https://github.com/jaredpalmer/formik      |
+| Notistack   | Displaying UI snackbars                                                                                                            | https://github.com/iamhosseindhv/notistack |
+| Axios       | Making http api calls                                                                                                              | https://github.com/TanStack/query          |
+| React Query | Handling http requests promises and used as a server state manager that store the incoming responses from the server automatically | https://github.com/TanStack/query          |
+| Formik      | Creating forms                                                                                                                     | https://github.com/jaredpalmer/formik      |
+| Yup         | Creating schema validators for formik forms                                                                                        | https://github.com/jquense/yup             |
+| Storybook   | Running and testing UI components in an isolated environment                                                                       | https://github.com/storybookjs/storybook   |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Architecture
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- In this project, we follow the MVVM architecture to separate the business logic of an application from the user
+  interface:
+  - First, we created our UI components to only display data passed as props.
+  - Then, we created custom react-query hooks based on the asynchronous functions of the api service to use them later in containers components.
+  - Finally, We used the containers components to combine the business logic and the UI components.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- This approach aims to:
+  - create a well-structured project
+  - making the components/login-functions testing easier
+  - clean and maintainable code
+  - get a high app performance.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Deployment
+
+This application is deployed on Vercel cloud using its CI/CD feature.
