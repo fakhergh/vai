@@ -12,7 +12,11 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Or [Click here](https://vai-bice.vercel.app) if you can test the deployed application online.
+Or [Click here](https://vai-bice.vercel.app) to test the deployed application online, as well as you can use the credentials below to sign in to the app.
+
+| Email         | Password | Role  |
+|---------------|----------|-------|
+| admin@vai.com | 0000     | ADMIN |
 
 ## Tech-Stack
 
