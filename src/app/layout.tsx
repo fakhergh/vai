@@ -7,15 +7,13 @@ import { SnackbarProvider } from 'notistack';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { queryClient } from '@/queryClient';
-import Head from 'next/head';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <title>VAI Platform</title>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-      </Head>
+      </head>
       <body>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>

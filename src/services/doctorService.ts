@@ -29,7 +29,7 @@ export function useUpdateDoctorMutation(id: string) {
       queryClient.setQueryData<any>(['doctors'], (prev: Response<Array<Doctor>>) => ({
         ...prev,
         data: prev?.data.map((doctor: Doctor) => {
-          if (doctor._id === data.data._id) data.data;
+          if (doctor._id === data.data._id) return data.data;
           return doctor;
         }),
       }));
